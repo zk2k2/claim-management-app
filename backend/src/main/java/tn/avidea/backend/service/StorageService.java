@@ -18,6 +18,8 @@ public interface StorageService {
 
   Resource loadAsResource(String filename);
 
+  public boolean delete(String filename);
+
   void deleteAll();
 
 }

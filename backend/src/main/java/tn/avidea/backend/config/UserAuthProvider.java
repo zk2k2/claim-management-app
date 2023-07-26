@@ -32,7 +32,6 @@ public class UserAuthProvider {
   @PostConstruct
   protected void init() {
     secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-    System.out.println("This is the secret key" + secretKey);
   }
 
   public String createToken(UserDto user) {
@@ -48,7 +47,6 @@ public class UserAuthProvider {
         .withClaim("lastName", user.getLastName())
         .sign(algorithm);
 
-    System.out.println("This is the token" + token);
     return token;
   }
 
