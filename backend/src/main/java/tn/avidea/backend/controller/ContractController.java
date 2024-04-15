@@ -3,6 +3,7 @@ package tn.avidea.backend.controller;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import tn.avidea.backend.service.ContractService;
+import tn.avidea.backend.dto.ContractDto;
 import tn.avidea.backend.entity.Claim;
 import tn.avidea.backend.entity.Contract;
 import java.util.List;
@@ -38,6 +39,11 @@ public class ContractController {
   @GetMapping("/contract/{contractNum}")
   Contract getContractByContractNum(@PathVariable String contractNum) {
     return contractService.getContractByContractNum(contractNum);
+  }
+
+  @GetMapping("/contracts/dtocontracts")
+  List<ContractDto> getAllContractDtos() {
+    return contractService.findAllContractDtos();
   }
 
 }

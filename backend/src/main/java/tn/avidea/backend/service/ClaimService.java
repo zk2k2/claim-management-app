@@ -37,12 +37,10 @@ public class ClaimService {
 
   public void saveClaimWithPhotos(Claim claim) {
     for (Photo photo : claim.getPhotos()) {
-      System.out.println("Photo saved successfully with id: " + photo.getPhotoId());
-      System.out.println("Claim id is: " + photo.getClaim().getClaimId());
+
       photo.setClaim(claim);
     }
     claimRepository.save(claim);
-    System.out.println("Claim saved eriksen successfully with id: " + claim.getClaimId());
   }
 
   public List<Claim> getAllClaims() {
@@ -58,7 +56,6 @@ public class ClaimService {
   }
 
   public void deleteClaim(int claimId) {
-    System.out.println("Deleting claim with id: " + claimId);
     claimRepository.deleteById(claimId);
   }
 

@@ -17,7 +17,7 @@ import jakarta.persistence.Column;
 public class Contract {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int contractId;
+  private int contractId; // Long
 
   // @OneToMany(mappedBy = "contract")
   // private List<Claim> claims;

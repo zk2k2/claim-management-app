@@ -6,16 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tn.avidea.backend.repository.ContractRepository;
 import tn.avidea.backend.entity.Contract;
 import jakarta.transaction.Transactional;
+import tn.avidea.backend.dto.ContractDto;
+import tn.avidea.backend.mappers.ContractMapper;
 import java.util.List;
 
 @Service
 @Transactional
 public class ContractService {
   public ContractRepository contractRepository;
+  private final ContractMapper contractMapper;
 
   @Autowired
-  public ContractService(ContractRepository contractRepository) {
+  public ContractService(ContractRepository contractRepository, ContractMapper contractMapper) {
     this.contractRepository = contractRepository;
+    this.contractMapper = contractMapper;
   }
 
   public void saveContract(Contract contract) {
@@ -35,5 +39,10 @@ public class ContractService {
 
   public Contract getContractByContractNum(String contractNum) {
     return contractRepository.findByContractNum(contractNum);
+  }
+
+  public List<ContractDto> findAllContractDtos() {
+    List<Contract> contracts = contractRepository.findAll();
+    return contractMapper.toContractDtos(contracts);
   }
 }
