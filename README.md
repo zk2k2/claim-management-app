@@ -6,10 +6,10 @@ Welcome to Claim Manager, an application designed to simplify the management of 
 Claim Manager provides a user-friendly interface to manage automobile insurance claims seamlessly. Here's how it allows you to manage claims effectively:
 
 ### 1. Claim Management
-- Manage claims efficiently by creating, reading, updating, or deleting them with all relevant details.
+Manage claims efficiently by creating, reading, updating, or deleting them with all relevant details.
   
 ### 2. Photo Management
-- Effortlessly handle accident photos by uploading, viewing, updating, or deleting them directly within claims for documentation and assessment.
+Effortlessly handle accident photos by uploading, viewing, updating, or deleting them directly within claims for documentation and assessment.
   
 ### 3. Angular 16 and Spring Boot 3 Integration
 Claim Manager leverages the latest features and capabilities of Angular and Spring Boot to provide a robust and responsive user experience. Angular powers the frontend, offering dynamic and interactive interfaces, while Spring Boot handles the backend, ensuring efficient data processing and management.
