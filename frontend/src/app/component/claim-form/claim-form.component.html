@@ -1,0 +1,145 @@
+<app-navbar></app-navbar>
+<form [formGroup]="claimForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="font-bold text-2xl mb-3">
+          Please enter the following claim information
+        </h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row my-5">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Claim number"
+              formControlName="claimNum"
+            />
+            <mat-error
+              *ngIf="claimForm.controls['claimNum'].hasError('required')"
+            >
+              Claim number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row my-5">
+        <mat-form-field class="full-width">
+          <mat-label> Accident date </mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Accident date"
+            formControlName="accidentDay"
+            [max]="getCurrentDate()"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+
+          <mat-datepicker #picker disabled="false"></mat-datepicker>
+
+          <mat-error
+            *ngIf="claimForm.controls['accidentDay'].hasError('required')"
+          >
+            Accident day <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div class="col ml-2">
+          <mat-form-field>
+            <input
+              matInput
+              name="accidentTime"
+              formControlName="accidentTime"
+              [ngxMatTimepicker]="timePicker"
+              placeholder="4:00 PM"
+            />
+            <mat-icon matSuffix (click)="timePicker.open()">
+              watch_later
+            </mat-icon>
+          </mat-form-field>
+          <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
+          <mat-error
+            *ngIf="claimForm.controls['accidentTime'].hasError('required')"
+          >
+          </mat-error>
+        </div>
+      </div>
+
+      <!-- <div class="row my-5">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Contract number"
+            formControlName="contractNum"
+          />
+          <mat-error
+            *ngIf="claimForm.controls['contractNum'].hasError('required')"
+          >
+            Contract number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div> -->
+      <div class="row my-5">
+        <mat-form-field class="full-width">
+          <mat-select
+            placeholder="Contract number"
+            formControlName="contractNum"
+          >
+            <mat-option
+              *ngFor="let contractNum of contractNums"
+              [value]="contractNum"
+            >
+              {{ contractNum }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="claimForm.controls['contractNum'].hasError('required')"
+          >
+            Contract number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row my-5">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Status" formControlName="status">
+            <mat-option *ngFor="let status of statuses" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="claimForm.controls['status'].hasError('required')">
+            Status is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="w-4/12 ml-3">
+          Upload accident photos
+          <input
+            type="file"
+            name=""
+            id=""
+            class="file-input"
+            (change)="selectFile($event)"
+            accept="image/*"
+            multiple
+          />
+        </button>
+      </div>
+      <div class="row my-5"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="form-validation">
+        <button mat-raised-button color="primary" type="submit" class="mx-2">
+          Submit
+        </button>
+        <button mat-raised-button color="gray" type="reset" class="mx-2">
+          Reset
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>

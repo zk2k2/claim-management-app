@@ -1,0 +1,32 @@
+<div
+  class="navbar bg-primary m-0 w-full flex justify-between items-center overflow-auto"
+>
+  <div class="flex-1 flex justify-center">
+    <div class="h-10 py-5">
+      <img
+        src="../../../assets/images/static/avidea_logo.png"
+        alt=""
+        class="h-10"
+      />
+    </div>
+
+    <h1 class="mat-h1 p-5 text-white font-bold text-3xl">
+      Avidea Claims Dashboard
+    </h1>
+  </div>
+  <div class="actions-container mx-3">
+    <button (click)="navigateToHome()">
+      <div class="home-button-container m-3 flex">
+        <fa-icon [icon]="faHouse" class="text-white text-xl mx-3"> </fa-icon>
+        <h1 class="mat-h1 text-white font-bold text-xl">Home</h1>
+      </div>
+    </button>
+    <button (click)="logout()">
+      <div class="logout-button-container m-3 flex">
+        <fa-icon [icon]="faRightFromBracket" class="text-white text-xl mx-3">
+        </fa-icon>
+        <h1 class="mat-h1 text-white font-bold text-xl">Logout</h1>
+      </div>
+    </button>
+  </div>
+</div>

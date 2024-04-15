@@ -1,0 +1,58 @@
+<div
+  class="container w-screen h-screen bg-slate-200 m-0 flex justify-center overflow-hidden"
+>
+  <div class="card-wrapper flex flex-col justify-center h-screen">
+    <div class="card">
+      <mat-card class="w-96 h-96">
+        <mat-card-header class="flex flex-col justify-center my-3">
+          <mat-card-title>
+            <h1 class="font-bold text-3xl">Welcome!</h1>
+          </mat-card-title>
+          <div class="my-2">
+            <p class="text-center">Please enter your credentials</p>
+          </div>
+        </mat-card-header>
+
+        <mat-card-content class="flex justify-center my-5">
+          <form #loginForm (ngSubmit)="login()">
+            <mat-form-field class="w-full">
+              <input
+                matInput
+                type="text"
+                matInput
+                placeholder="Username"
+                id="username"
+                name="username"
+                required
+                [(ngModel)]="input.username"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <input
+                type="password"
+                matInput
+                placeholder="Password"
+                id="password"
+                name="password"
+                required
+                [(ngModel)]="input.password"
+              />
+            </mat-form-field>
+
+            <div class="button my-3">
+              <button
+                type="submit"
+                mat-raised-button
+                color="primary"
+                class="w-full"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

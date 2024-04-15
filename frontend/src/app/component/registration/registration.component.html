@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<form [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="font-bold text-2xl mb-3">
+          Please enter the following information to register
+        </h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row my-5">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="First name"
+              formControlName="firstName"
+            />
+            <mat-error
+              *ngIf="
+                registrationForm.controls['firstName'].hasError('required')
+              "
+            >
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row my-5">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Last name" formControlName="lastName" />
+          <mat-error
+            *ngIf="registrationForm.controls['lastName'].hasError('required')"
+          >
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row my-5">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Username" formControlName="login" />
+          <mat-error
+            *ngIf="registrationForm.controls['login'].hasError('required')"
+          >
+            Contract number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row my-5">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <mat-error
+            *ngIf="registrationForm.controls['password'].hasError('required')"
+          >
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="form-validation">
+        <button mat-raised-button color="primary" type="submit" class="mx-2">
+          Register
+        </button>
+        <button mat-raised-button color="gray" type="reset" class="mx-2">
+          Reset
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>

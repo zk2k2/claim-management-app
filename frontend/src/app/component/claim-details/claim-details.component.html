@@ -1,0 +1,137 @@
+<app-navbar></app-navbar>
+
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <fa-icon [icon]="faFileCircleExclamation" class="mx-2 text-lg"></fa-icon>
+      <h1>Claim</h1>
+    </ng-template>
+    <div
+      class="content-wrapper w-full h-screen mt-2 overflow-y-auto bg-slate-200"
+    >
+      <mat-card class="m-4">
+        <mat-card-header>
+          <mat-card-title>
+            <h1 class="font-bold text-3xl my-3">
+              Claim N°: {{ claim.claimNum }}
+            </h1>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="flex-col justify-around my-7 mx-2">
+            <div>
+              <h1>
+                <span class="text-gray-500 text-lg">
+                  <fa-icon [icon]="faCalendarPlus" class="mr-2"></fa-icon>
+                  Created on:</span
+                >
+                {{ claim.creationDate | date : "MMMM d, yyyy 'at' hh:mm a " }}
+              </h1>
+            </div>
+            <div>
+              <h1>
+                <span class="text-gray-500 text-lg">
+                  <fa-icon [icon]="faCarBurst" class="mr-2"></fa-icon>Accident
+                  date:</span
+                >
+                {{
+                  claim.accidentDate | date : "MMMM d, yyyy 'at' hh:mm a (zzzz)"
+                }}
+              </h1>
+            </div>
+            <div>
+              <h1>
+                <span class="text-gray-500 text-lg">
+                  <fa-icon [icon]="faBarsProgress" class="mr-2"></fa-icon
+                  >Status:</span
+                >
+                {{ claim.status }}
+              </h1>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <fa-icon [icon]="faFileSignature" class="mx-2 text-lg"></fa-icon>
+      Contract
+    </ng-template>
+    <div
+      class="content-wrapper w-full h-screen mt-2 overflow-y-auto bg-slate-200"
+    >
+      <mat-card class="m-4">
+        <mat-card-header>
+          <mat-card-title>
+            <h1 class="font-bold text-3xl my-3">
+              Contract N°: {{ claim.contract.contractNum }}
+            </h1>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="flex justify-around my-7">
+            <div>
+              <h1>
+                <span class="text-gray-500 text-lg">
+                  <fa-icon [icon]="faPenFancy"></fa-icon> Signed on:</span
+                >
+                {{ claim.contract.startDate | date : "MMMM d, yyyy" }}
+              </h1>
+            </div>
+            <div>
+              <h1>
+                <span class="text-gray-500 text-lg">
+                  <fa-icon [icon]="faHourglassEnd"></fa-icon> Expires on:</span
+                >
+                {{ claim.contract.endDate | date : "MMMM d, yyyy" }}
+              </h1>
+            </div>
+            <div>
+              <h1>
+                <span class="text-gray-500 text-lg">
+                  <fa-icon [icon]="faUser" class="mx-2"></fa-icon>Insured
+                  name:</span
+                >
+                {{ claim.contract.insuredName }}
+              </h1>
+            </div>
+            <div>
+              <h1>
+                <span class="text-gray-500 text-lg">
+                  <fa-icon [icon]="faCar" class="mx-2"></fa-icon>Car
+                  registration:</span
+                >
+                {{ claim.contract.vehiculeRegistration }}
+              </h1>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon mx-2"
+        >photo_size_select_actual</mat-icon
+      >
+      Photos
+    </ng-template>
+    <div class="photo-container">
+      <div class="photo-wrapper flex-col justify-center bg-slate-200 h-screen">
+        <div *ngIf="photos.length == 0" class="flex justify-center p-4">
+          <p>No photos to show.</p>
+        </div>
+        <div class="photo flex justify-center" *ngFor="let photo of photos">
+          <img
+            [src]="photo.filePath"
+            alt="the image could not be found"
+            class="w-3/4"
+          />
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

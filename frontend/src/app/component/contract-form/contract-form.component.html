@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+<form [formGroup]="contractForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="font-bold text-2xl mb-3">
+          Please enter the following contract information
+        </h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row my-5">
+        <!-- Contract number field -->
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Contract number"
+            formControlName="contractNum"
+            maxlength="20"
+          />
+          <mat-error
+            *ngIf="contractForm.controls['contractNum'].hasError('required')"
+          >
+            Contract number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row my-5">
+        <!-- Contract start date -->
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            placeholder="Contract start date"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+
+          <mat-error
+            *ngIf="contractForm.controls['startDate'].hasError('required')"
+          >
+            Contract start date is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row my-5">
+        <!-- Contract end date -->
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            placeholder="Contract expiry date"
+            formControlName="endDate"
+            [min]="contractForm.controls['startDate'].value"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+
+          <mat-error
+            *ngIf="contractForm.controls['endDate'].hasError('required')"
+          >
+            Contract expiry date is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row my-5">
+        <!-- Insured name field -->
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Insured's name"
+            formControlName="insuredName"
+            maxlength="50"
+          />
+          <mat-error
+            *ngIf="contractForm.controls['insuredName'].hasError('required')"
+          >
+            Insured's name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row mt-5 mb-10">
+        <!-- Vehicule registration field -->
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Vehicule registration"
+            formControlName="vehiculeRegistration"
+            maxlength="15"
+          />
+          <mat-error
+            *ngIf="
+              contractForm.controls['vehiculeRegistration'].hasError('required')
+            "
+          >
+            Vehicule's registration is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="my-5">
+        <button mat-raised-button color="primary" type="submit" class="mx-2">
+          Submit
+        </button>
+        <button mat-raised-button color="gray" type="reset" class="mx-2">
+          Reset
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>
